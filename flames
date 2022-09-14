@@ -1,0 +1,13 @@
+S1 = input("enter first string")
+S2 = input("Enter 2nd string")
+for each in S1:
+    if each in S2:
+        i = S2.find(each)
+        S1.pop(each)
+        S2.pop(i)
+length = len(S1)+len(S2)
+flm = "flames"
+rem = len(flm)
+while len(flm)!= 1:
+    flm = flm.remove(rem%length)
+print(flm)
