@@ -1,0 +1,55 @@
+<html>
+
+<!-- <!DOM with javascript>  -->
+    <head>
+
+<title>user profile example</title>
+ </head>
+
+<body>
+<script type="text/JavaScript">
+    function loadXMLDoc() {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+
+            if (this.readyState == 4 && this.status == 200) {
+                empDetails(this);
+            }
+        };
+
+        // employee.xml is the external xml file
+        xmlhttp.open("GET", "data.xml", true);
+        xmlhttp.send();
+    }
+
+    function empDetails(xml) {
+    var xmlDoc = xml.responseXML;
+    var x = xmlDoc.getElementsByTagName("user");
+    var y =document.getElementById("num").value;
+    let n = y-1
+    document.getElementById("jntuno").innerHTML= x[n].getElementsByTagName("jntuno")[0].childNodes[0].nodeValue;
+    document.getElementById("name").innerHTML=x[n].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+    document.getElementById("phno").innerHTML=x[n].getElementsByTagName("phno")[0].childNodes[0].nodeValue;
+    document.getElementById("address").innerHTML=x[n].getElementsByTagName("address")[0].childNodes[0].nodeValue;
+    }
+
+</script>
+<div>
+
+
+    <b>jntuno : </b><span id="jntuno"></span><br>
+    <b>name : </b><span id="name"></span><br>
+    <b>phno : </b><span id="phno"></span><br>
+    <b>address : </b><span id="address"></span><br>
+</div>
+</body>
+<center>
+    <h3>Enter your choice : </h3>
+    <input type="number" id="num" min="1" max="10">
+    <button type="button" class="button" 
+        onclick="loadXMLDoc()">
+        Get Employees Details
+    </button>
+</center>
+  
+</html>
